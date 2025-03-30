@@ -1,9 +1,18 @@
 import { useContext } from "react";
-import { SelectGameContext } from "./SelectGameContext";
+import { GameStateContext, GameActionContext } from "./SelectGameContext";
 
-export const useSelectGame = () => {
-  const context = useContext(SelectGameContext);
-  if (!context)
-    throw new Error("useSelectGame must be used within a SelectGameProvider");
+export const useGameState = () => {
+  const context = useContext(GameStateContext);
+  if (!context) {
+    throw new Error("useGameState must be used within a SelectGameProvider");
+  }
+  return context;
+};
+
+export const useGameActions = () => {
+  const context = useContext(GameActionContext);
+  if (!context) {
+    throw new Error("useGameActions must be used within a SelectGameProvider");
+  }
   return context;
 };

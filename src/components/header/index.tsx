@@ -1,16 +1,18 @@
-import React from "react";
+import React, { use } from "react";
 import "./styles.scss";
 import { HeaderProps } from "./types";
+import { useNavigate } from "react-router-dom";
 
 const Header: React.FC<HeaderProps> = ({
   title,
   showBackButton = false,
-  onClick,
   className = "",
 }) => {
+  const navigate = useNavigate();
   const handleBackClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    onClick?.();
+    // navigate to previous page
+    navigate(-1);
   };
 
   return (

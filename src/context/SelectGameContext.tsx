@@ -1,12 +1,18 @@
 import { Game } from "@/mockdata/mockData";
 import { createContext, useState } from "react";
 
-interface SelectGameContextType {
-  gameSelect: (game: Game) => void;
+interface GameStateContextType {
   selectedGame: Game | null;
 }
 
-export const SelectGameContext = createContext<SelectGameContextType | null>(
+interface GameActionContextType {
+  setSelectedGame: (game: Game) => void;
+}
+
+export const GameStateContext = createContext<GameStateContextType | null>(
+  null
+);
+export const GameActionContext = createContext<GameActionContextType | null>(
   null
 );
 
@@ -16,10 +22,12 @@ export const SelectGameProvider = ({
   children: React.ReactNode;
 }) => {
   const [selectedGame, setSelectedGame] = useState<Game | null>(null);
-  const gameSelect = (game: Game) => setSelectedGame(game);
+
   return (
-    <SelectGameContext.Provider value={{ gameSelect, selectedGame }}>
-      {children}
-    </SelectGameContext.Provider>
+    <GameStateContext.Provider value={{ selectedGame }}>
+      <GameActionContext.Provider value={{ setSelectedGame }}>
+        {children}
+      </GameActionContext.Provider>
+    </GameStateContext.Provider>
   );
 };

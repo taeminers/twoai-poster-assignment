@@ -2,15 +2,19 @@ import "./styles.scss";
 import mockData from "@/mockdata/mockData";
 import { GameCard } from "../GameCard";
 import Space from "@/components/space";
-import { useSelectGame } from "@/context/useSelectGame";
+import { useGameActions, useGameState } from "@/context/useSelectGame";
 export const GameList = () => {
-  const { gameSelect } = useSelectGame();
+  const { selectedGame } = useGameState();
+  const { setSelectedGame } = useGameActions();
+  // wrap gamecard with div to handle context api re-rendering issue.
   return (
     <>
       <Space height={20} />
       <div className="game-list">
         {mockData.map((game) => (
-          <GameCard {...game} key={game.id} onClick={() => gameSelect(game)} />
+          <div onClick={() => setSelectedGame(game)} key={game.id}>
+            <GameCard {...game} isSelected={selectedGame?.id === game.id} />
+          </div>
         ))}
       </div>
       <Space height={20} />
