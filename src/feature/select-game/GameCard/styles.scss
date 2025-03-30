@@ -1,0 +1,38 @@
+.game-card {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #e5e7eb;
+  padding: 16px;
+  align-items: center;
+  border-radius: 10px;
+  cursor: pointer;
+  &.selected {
+    border: 2px solid #3060ff;
+    background-color: #e5e7eb;
+  }
+}
+
+.game-card__teams {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.game-card__date-venue {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.game-card__teams-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.game-card__date-venue-text {
+  font-size: 14px;
+  font-weight: 400;
+  color: #6b7280;
+}
