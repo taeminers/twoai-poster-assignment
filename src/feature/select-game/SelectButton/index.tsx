@@ -1,15 +1,12 @@
+import React from "react";
 import { Button } from "@/components/button";
-import { useGameState } from "@/context/useSelectGame";
-import { useNavigate } from "react-router-dom";
-export const SelectButton = () => {
-  const { selectedGame } = useGameState();
-  const navigate = useNavigate();
-  const selectHandler = () => {
-    navigate(`/poster?gameId=${selectedGame?.id}`);
-  };
+import { useGameNavigation } from "../hooks/useGameNavigation";
+
+export const SelectButton = React.memo(() => {
+  const { gameId, navigateToPoster } = useGameNavigation();
   return (
-    <Button fixed={true} disabled={!selectedGame} onClick={selectHandler}>
+    <Button fixed disabled={!gameId} onClick={navigateToPoster}>
       Select Game
     </Button>
   );
-};
+});

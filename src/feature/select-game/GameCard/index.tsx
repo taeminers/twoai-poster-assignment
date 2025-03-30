@@ -12,6 +12,7 @@ interface GameCardProps {
 
 export const GameCard = React.memo(
   ({ id, teamA, teamB, date, venue, isSelected }: GameCardProps) => {
+    console.log("gamecardrender");
     return (
       <div className={`game-card ${isSelected ? "selected" : ""}`}>
         <div className="game-card__teams">
