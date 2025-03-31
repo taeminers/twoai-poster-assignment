@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { HeaderProps } from './types';
 /*
  ** - accept elements as buttons
+ ** - as lefticon or righticon could be a button, make parent a div(nested button issue)
  */
 const Header: React.FC<HeaderProps> = ({
   title,
@@ -23,14 +24,12 @@ const Header: React.FC<HeaderProps> = ({
     <header className={`header ${className}`}>
       <div className="header__container">
         {leftIcon && (
-          <button className="header__left-button" onClick={handleBackClick}>
+          <div className="header__left-button" onClick={handleBackClick}>
             {leftIcon}
-          </button>
+          </div>
         )}
         <h2 className="header__title">{title}</h2>
-        {rightIcon && (
-          <button className="header__right-button">{rightIcon}</button>
-        )}
+        {rightIcon && <div className="header__right-button">{rightIcon}</div>}
       </div>
     </header>
   );

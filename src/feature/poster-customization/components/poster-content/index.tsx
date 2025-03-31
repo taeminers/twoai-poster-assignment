@@ -3,15 +3,18 @@ import { PosterText } from '@/feature/poster-customization/components/poster-tex
 import { useEditPoster } from '@/feature/poster-customization/context/use-edit-poster';
 import { usePosterContent } from '@/feature/poster-customization/context/use-poster-content';
 
+import { getBackgroundStyle } from '../../helpers/get-background-style';
 import { ImageUploader } from '../image-uploader';
+
 export const PosterContent = () => {
   const { isEditMode } = useEditPoster();
   const { posterData, editingField } = usePosterContent();
+  const backgroundStyle = getBackgroundStyle(posterData.backgroundImage);
   return (
-    <div className="view-content">
+    <div className="poster-content" style={backgroundStyle}>
       <ImageUploader isEditMode={isEditMode} />
-      <div className="view-content__top">
-        <div className="view-content__date">
+      <div className="poster-content__top">
+        <div className="poster-content__date">
           <PosterText
             text={posterData.date}
             editingField={editingField}
@@ -19,7 +22,7 @@ export const PosterContent = () => {
             disabled={!isEditMode}
           />
         </div>
-        <div className="view-content__team">
+        <div className="poster-content__team">
           <PosterText
             text={posterData.teamA.name}
             editingField={editingField}
@@ -33,7 +36,7 @@ export const PosterContent = () => {
             disabled={!isEditMode}
           />
         </div>
-        <div className="view-content__team">
+        <div className="poster-content__team">
           <PosterText
             text={posterData.teamB.name}
             editingField={editingField}
@@ -48,8 +51,8 @@ export const PosterContent = () => {
           />
         </div>
       </div>
-      <div className="view-content__bottom">
-        <div className="view-content__players">
+      <div className="poster-content__bottom">
+        <div className="poster-content__players">
           {posterData.teamA.players.map((player) => (
             <PosterText
               key={player.id}
@@ -60,7 +63,7 @@ export const PosterContent = () => {
             />
           ))}
         </div>
-        <div className="view-content__players">
+        <div className="poster-content__players">
           {posterData.teamB.players.map((player) => (
             <PosterText
               key={player.id}

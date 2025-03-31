@@ -12,6 +12,7 @@ export interface PosterData {
   teamB: Team;
   venue: string;
   date: string;
+  backgroundImage: string;
 }
 
 interface PosterContentContextType {
@@ -64,6 +65,7 @@ export const PosterContentProvider = ({
     teamB: secondTeam,
     venue: game?.venue,
     date: game?.date,
+    backgroundImage: '',
   });
   return (
     <PosterContentContext.Provider

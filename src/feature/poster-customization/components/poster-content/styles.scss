@@ -1,4 +1,4 @@
-.view-content {
+.poster-content {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,7 +9,7 @@
   position: relative;
 }
 
-.view-content__top {
+.poster-content__top {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,20 +18,20 @@
   width: 100%;
 }
 
-.view-content__team {
+.poster-content__team {
   display: flex;
   width: 100%;
   justify-content: space-evenly;
 }
 
-.view-content__bottom {
+.poster-content__bottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
 }
 
-.view-content__players {
+.poster-content__players {
   display: flex;
   flex-direction: column;
   align-items: center;
