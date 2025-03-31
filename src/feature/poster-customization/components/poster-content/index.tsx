@@ -1,14 +1,15 @@
-import { UploadPhoto } from '@/components/icons/upload-photo';
 import './styles.scss';
 import { PosterText } from '@/feature/poster-customization/components/poster-text';
 import { useEditPoster } from '@/feature/poster-customization/context/use-edit-poster';
 import { usePosterContent } from '@/feature/poster-customization/context/use-poster-content';
+
+import { ImageUploader } from '../image-uploader';
 export const PosterContent = () => {
   const { isEditMode } = useEditPoster();
   const { posterData, editingField } = usePosterContent();
   return (
     <div className="view-content">
-      <UploadPhoto />
+      <ImageUploader isEditMode={isEditMode} />
       <div className="view-content__top">
         <div className="view-content__date">
           <PosterText
