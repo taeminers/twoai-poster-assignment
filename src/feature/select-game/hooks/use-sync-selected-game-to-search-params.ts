@@ -14,5 +14,5 @@ export const useSyncSelectedGameToSearchParams = () => {
     } else {
       setSearchParams({});
     }
-  }, [selectedGame, setSearchParams]);
+  }, [selectedGame]);
 };

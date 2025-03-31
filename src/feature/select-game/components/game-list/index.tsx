@@ -16,13 +16,10 @@ import { GameCard } from '../game-card';
 export const GameList = () => {
   const { selectedGame } = useGameState();
   const { setSelectedGame } = useGameActions();
-
   const selectGameHandler = (game: Game) => {
     setSelectedGame((prev) => (prev?.id === game.id ? null : game));
   };
-
   useSyncSelectedGameToSearchParams(); // keeps side effects out of component body
-
   return (
     <div className="game-list">
       {mockdata_games.map((game) => (

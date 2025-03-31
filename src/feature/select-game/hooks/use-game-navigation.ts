@@ -5,7 +5,6 @@ export const useGameNavigation = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const gameId = searchParams.get('gameId');
-
   const navigateToPoster = useCallback(() => {
     navigate(`/poster?gameId=${gameId}`);
   }, [navigate, gameId]);
