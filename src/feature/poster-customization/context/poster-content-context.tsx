@@ -4,6 +4,7 @@ import { Dispatch, SetStateAction } from 'react';
 import { Team } from '@/mockdata/mockdata-teams';
 import mockdata_teams from '@/mockdata/mockdata-teams';
 
+import { getFieldValue, setFieldValue } from '../helpers/get-set-field-value';
 import { usePosterData } from '../hooks/use-poster-data';
 
 export interface PosterData {
@@ -18,9 +19,9 @@ interface PosterContentContextType {
   setPosterData: Dispatch<SetStateAction<PosterData>>;
   tempValue: string;
   setTempValue: Dispatch<SetStateAction<string>>;
-  editingField: keyof PosterData | null;
-  setEditingField: Dispatch<SetStateAction<keyof PosterData | null>>;
-  handleTextClick: (field: keyof PosterData) => void;
+  editingField: string | null;
+  setEditingField: Dispatch<SetStateAction<string | null>>;
+  handleTextClick: (field: string) => void;
   handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
   handleSaveEdit: () => void;
   handleCancelEdit: () => void;
@@ -41,22 +42,17 @@ export const PosterContentProvider = ({
     return null;
   }
   const [tempValue, setTempValue] = useState<string>('');
-  const [editingField, setEditingField] = useState<keyof PosterData | null>(
-    null,
-  );
-  const handleTextClick = (field: keyof PosterData) => {
+  const [editingField, setEditingField] = useState<string | null>(null);
+  const handleTextClick = (field: string) => {
     setEditingField(field);
-    setTempValue(String(posterData[field]));
+    setTempValue(String(getFieldValue(posterData, field)));
   };
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setTempValue(e.target.value);
   };
   const handleSaveEdit = () => {
     if (editingField) {
-      setPosterData({
-        ...posterData,
-        [editingField]: tempValue,
-      });
+      setPosterData((prev) => setFieldValue(prev, editingField, tempValue));
       setEditingField(null);
     }
   };

@@ -1,17 +1,9 @@
 import './styles.scss';
 import { usePosterContent } from '../../context/use-poster-content';
+import { PosterText } from '../poster-text';
 
 export const PosterContent = () => {
-  const {
-    posterData,
-    editingField,
-    tempValue,
-    handleInputChange,
-    handleSaveEdit,
-    handleCancelEdit,
-    handleTextClick,
-  } = usePosterContent();
-  console.log('posterData', posterData);
+  const { posterData, editingField } = usePosterContent();
   return (
     <div className="view-content">
       {/* <div className="view-content__players">
@@ -20,17 +12,31 @@ export const PosterContent = () => {
       <div className="view-content__players">
         {secondTeam?.players.map((player) => <h3>{player.name}</h3>)}
       </div> */}
-      {editingField === 'venue' ? (
-        <div>
-          <input value={tempValue} onChange={handleInputChange} autoFocus />
-          <div>
-            <button onClick={handleSaveEdit}>save</button>
-            <button onClick={handleCancelEdit}>Cancel</button>
-          </div>
-        </div>
-      ) : (
-        <div onClick={() => handleTextClick('venue')}>{posterData.venue}</div>
-      )}
+      <PosterText
+        text={posterData.teamA.name}
+        editingField={editingField}
+        field="teamA.name"
+      />
+      <PosterText
+        text={posterData.teamA.players[3].name}
+        editingField={editingField}
+        field="teamA.players.3.name"
+      />
+      <PosterText
+        text={posterData.teamA.players[0].name}
+        editingField={editingField}
+        field="teamA.players.0.name"
+      />
+      <PosterText
+        text={posterData.date}
+        editingField={editingField}
+        field="date"
+      />
+      <PosterText
+        text={posterData.venue}
+        editingField={editingField}
+        field="venue"
+      />
     </div>
   );
 };
