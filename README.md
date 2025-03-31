@@ -26,7 +26,8 @@ Rules (bulletproof-react)
 - Filename and Folder name convention (kebab-case)
 
 Other things to Note.
--Tried to make components follow SOLID principles.
+-Tried to make components have single responsibility.
+- Didn't have time to thoroughly think through SOLID principles.
 
 - Used CRACO for alias imports.
 
