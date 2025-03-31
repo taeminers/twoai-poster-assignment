@@ -1,8 +1,8 @@
-import { createContext, useState } from 'react';
+import { createContext, Dispatch, SetStateAction, useState } from 'react';
 
 interface EditPosterContextType {
   isEditMode: boolean;
-  setIsEditMode: (isEditMode: boolean) => void;
+  setIsEditMode: Dispatch<SetStateAction<boolean>>;
 }
 
 export const EditPosterContext = createContext<EditPosterContextType | null>(

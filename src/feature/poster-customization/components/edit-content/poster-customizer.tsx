@@ -156,57 +156,55 @@ const PosterCustomizer = () => {
           </button>
         </div>
 
-        {isEditMode && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label className="block mb-2">Background Image:</label>
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handleBackgroundChange}
-                className="w-full"
-              />
-            </div>
-
-            <div>
-              <label className="block mb-2">Font Color:</label>
-              <input
-                type="color"
-                value={posterData.fontColor}
-                onChange={handleColorChange}
-                className="w-full h-10"
-              />
-            </div>
-
-            <div>
-              <label className="block mb-2">Font Size:</label>
-              <input
-                type="range"
-                min="12"
-                max="72"
-                value={parseInt(posterData.fontSize)}
-                onChange={handleFontSizeChange}
-                className="w-full"
-              />
-              <span>{posterData.fontSize}</span>
-            </div>
-
-            <div>
-              <label className="block mb-2">Font Family:</label>
-              <select
-                value={posterData.fontFamily}
-                onChange={handleFontFamilyChange}
-                className="w-full p-2 border rounded"
-              >
-                <option value="Arial">Arial</option>
-                <option value="Verdana">Verdana</option>
-                <option value="Times New Roman">Times New Roman</option>
-                <option value="Georgia">Georgia</option>
-                <option value="Courier New">Courier New</option>
-              </select>
-            </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label className="block mb-2">Background Image:</label>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleBackgroundChange}
+              className="w-full"
+            />
           </div>
-        )}
+
+          <div>
+            <label className="block mb-2">Font Color:</label>
+            <input
+              type="color"
+              value={posterData.fontColor}
+              onChange={handleColorChange}
+              className="w-full h-10"
+            />
+          </div>
+
+          <div>
+            <label className="block mb-2">Font Size:</label>
+            <input
+              type="range"
+              min="12"
+              max="72"
+              value={parseInt(posterData.fontSize)}
+              onChange={handleFontSizeChange}
+              className="w-full"
+            />
+            <span>{posterData.fontSize}</span>
+          </div>
+
+          <div>
+            <label className="block mb-2">Font Family:</label>
+            <select
+              value={posterData.fontFamily}
+              onChange={handleFontFamilyChange}
+              className="w-full p-2 border rounded"
+            >
+              <option value="Arial">Arial</option>
+              <option value="Verdana">Verdana</option>
+              <option value="Times New Roman">Times New Roman</option>
+              <option value="Georgia">Georgia</option>
+              <option value="Courier New">Courier New</option>
+            </select>
+          </div>
+        </div>
       </div>
 
       {/* Poster Preview */}
