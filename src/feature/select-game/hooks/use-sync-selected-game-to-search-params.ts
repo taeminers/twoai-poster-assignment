@@ -1,6 +1,7 @@
-import { useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
-import { useGameState } from "@/context/useSelectGame";
+import { useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
+
+import { useGameState } from '@/context/use-select-game';
 
 export const useSyncSelectedGameToSearchParams = () => {
   const { selectedGame } = useGameState();

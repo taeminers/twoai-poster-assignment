@@ -1,6 +1,8 @@
-import React from "react";
-import { Button } from "@/components/button";
-import { useGameNavigation } from "../hooks/useGameNavigation";
+import React from 'react';
+
+import { Button } from '@/components/button';
+
+import { useGameNavigation } from '../hooks/use-game-navigation';
 
 export const SelectButton = React.memo(() => {
   const { gameId, navigateToPoster } = useGameNavigation();

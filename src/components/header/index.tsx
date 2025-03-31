@@ -1,12 +1,13 @@
-import React, { use } from "react";
-import "./styles.scss";
-import { HeaderProps } from "./types";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import './styles.scss';
+import { useNavigate } from 'react-router-dom';
+
+import { HeaderProps } from './types';
 
 const Header: React.FC<HeaderProps> = ({
   title,
   showBackButton = false,
-  className = "",
+  className = '',
 }) => {
   const navigate = useNavigate();
   const handleBackClick = (e: React.MouseEvent) => {

@@ -1,9 +1,10 @@
-import "./styles.scss";
-import mockData, { Game } from "@/mockdata/mockData";
-import { GameCard } from "../GameCard";
-import Space from "@/components/space";
-import { useGameActions, useGameState } from "@/context/useSelectGame";
-import { useSyncSelectedGameToSearchParams } from "@/feature/select-game/hooks/useSyncSelectSearchParams";
+import './styles.scss';
+import Space from '@/components/space';
+import { useGameActions, useGameState } from '@/context/use-select-game';
+import { useSyncSelectedGameToSearchParams } from '@/feature/select-game/hooks/use-sync-selected-game-to-search-params';
+import mockData_games, { Game } from '@/mockdata/mockdata-games';
+
+import { GameCard } from '../game-card';
 
 /**
  * Make sure GameCard component does not render because of context API
@@ -19,13 +20,12 @@ export const GameList = () => {
   };
 
   useSyncSelectedGameToSearchParams(); // keeps side effects out of component body
-  // console.log("gamelistrender");
 
   return (
     <>
       <Space height={20} />
       <div className="game-list">
-        {mockData.map((game) => (
+        {mockData_games.map((game) => (
           <div onClick={() => selectGameHandler(game)} key={game.id}>
             <GameCard {...game} isSelected={selectedGame?.id === game.id} />
           </div>
