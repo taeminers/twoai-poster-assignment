@@ -3,11 +3,14 @@ import './styles.scss';
 import { useNavigate } from 'react-router-dom';
 
 import { HeaderProps } from './types';
-
+/*
+ ** - accept children as button for the right button
+ */
 const Header: React.FC<HeaderProps> = ({
   title,
   showBackButton = false,
   className = '',
+  children,
 }) => {
   const navigate = useNavigate();
   const handleBackClick = (e: React.MouseEvent) => {
@@ -43,6 +46,7 @@ const Header: React.FC<HeaderProps> = ({
           </button>
         )}
         <h2 className="header__title">{title}</h2>
+        <div className="header__right-button">{children}</div>
       </div>
     </header>
   );

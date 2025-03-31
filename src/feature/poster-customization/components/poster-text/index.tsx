@@ -4,9 +4,18 @@ interface PosterTextProps {
   text: string;
   field: string;
   editingField: string | null;
+  disabled?: boolean;
 }
+/*
+ ** - if more time, use HOC for disabled, or some other logic
+ */
 
-export const PosterText = ({ text, field, editingField }: PosterTextProps) => {
+export const PosterText = ({
+  text,
+  field,
+  editingField,
+  disabled,
+}: PosterTextProps) => {
   const {
     tempValue,
     handleInputChange,
@@ -26,7 +35,7 @@ export const PosterText = ({ text, field, editingField }: PosterTextProps) => {
           </div>
         </div>
       ) : (
-        <div onClick={() => handleTextClick(field)}>{text}</div>
+        <div onClick={() => handleTextClick(disabled ? '' : field)}>{text}</div>
       )}
     </div>
   );

@@ -27,6 +27,19 @@
     margin: 0;
     text-align: center;
   }
+  &__right-button {
+    position: absolute;
+    right: 16px;
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s ease;
+  }
 
   &__back-button {
     position: absolute;
