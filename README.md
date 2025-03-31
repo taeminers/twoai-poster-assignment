@@ -1,46 +1,117 @@
-# Getting Started with Create React App
+# Sports Poster Generator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React application that allows users to create and customize sports event posters with team information, player lists, and custom backgrounds.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Create sports event posters with team information
+- Customize team names, slogans, venue, date and player names
+- Upload custom background image for poster
+- Download posters as PNG images
 
-### `npm start`
+## Tech Stack & Rules for clean, modular code
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Stack
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- React
+- TypeScript
+- SASS/SCSS
+- ESLint
 
-### `npm test`
+Rules (bulletproof-react)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Import restrictions and order
+- Line break style
+- TS specific rules (unused variables, any type)
+- Filename and Folder name convention (kebab-case)
 
-### `npm run build`
+Other things to Note.
+-Tried to make components follow SOLID principles.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Used CRACO for alias imports.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Getting Started
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Prerequisites
 
-### `npm run eject`
+- Node.js (v14 or higher)
+- npm or yarn
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Installation
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Clone the repository:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+git clone [repository-url]
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+2. Install dependencies:
 
-## Learn More
+```bash
+npm install
+# or
+yarn install
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. Start the development server:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+npm run start
+# or
+yarn start
+```
+
+The application will be available at `http://localhost:3000`
+
+## Project Structure
+
+Feature-based file structure as project size is small, and features are easily separated by concern.
+
+```
+src/
+├── components/         # Reusable UI components & non feature-related components
+├── feature/           # Feature-based modules
+│   ├── poster-customization/  # Poster editing features
+│   └── poster-download/       # Poster download features
+|   |__ select-game/           # select game feature
+├── mockdata/          # Mock data for teams and players
+└── pages/           # Pages components
+```
+
+Inside each feature, we have the following file structure
+feature-name/
+├── components/ # Non-reusable components used for the feature.
+│ ├── index.tsx/ # Component Code
+│ └── styles.scss/ # styling file
+├── context/ # context used for feature
+├── hooks/ # hooks used for feature
+└── helpers/ # helpers used for this feature
+
+## Usage
+
+1. Select a game from the game list
+2. Enter edit mode to customize the poster
+3. Edit team information, player names, and upload background images
+4. Download the customized poster
+
+## Trade-offs or Shortcuts Taken
+
+1. Used Context API instead of State Management Libraries.
+
+- To showcase that I have an understanding of context API, and it's limitations.
+- Handle re-rendering through splitting up context.
+- Simplicity and Maintainability. Small project, small context can be handled with only context API
+
+2. Testing Unit Test, Integration Test, E2E Test.
+
+- Simply no time to implement a thorough test.
+- If I had the time, I would test
+  - Data flow through contexts
+  - User Interactions for selecting game, editing poster through inputs
+  - Image upload functionality
+  - Download functionality
+
+3. Did not Persist state for poster (don't know if its a shortcut)
+
+- From UX perspective, didn't seem correct to save the data user has changed. Don't have an API to change backend, but also, if user leaves, usually changes are not saved.
+- Also, would be weird if we change player name to something weird, and that data persists.
