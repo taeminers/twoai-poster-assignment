@@ -4,10 +4,9 @@ A React application that allows users to create and customize sports event poste
 
 ## Features
 
-- Create sports event posters with team information
-- Customize team names, slogans, venue, date and player names
-- Upload custom background image for poster
-- Download posters as PNG images
+- Select a game from game list.
+- Customize team names, slogans, venue, date and player names, and upload custom background image for poster.
+- Download posters as PNG images.
 
 ## Tech Stack & Rules for clean, modular code
 
@@ -26,9 +25,8 @@ Rules (bulletproof-react)
 - Filename and Folder name convention (kebab-case)
 
 Other things to Note.
--Tried to make components have single responsibility.
+- Tried to make components have single responsibility.
 - Didn't have time to thoroughly think through SOLID principles.
-
 - Used CRACO for alias imports.
 
 ## Getting Started
