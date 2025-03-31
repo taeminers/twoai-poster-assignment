@@ -3,7 +3,10 @@
     "*.ttml": "xml",
     "*.ttss": "css"
   },
-  "editor.codeActionsOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.fixAll.eslint": "explicit"
+  },
   "eslint.validate": [
     "javascript",
     "javascriptreact",

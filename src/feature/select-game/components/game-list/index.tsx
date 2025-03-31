@@ -1,6 +1,8 @@
 import './styles.scss';
-import Space from '@/components/space';
-import { useGameActions, useGameState } from '@/context/use-select-game';
+import {
+  useGameActions,
+  useGameState,
+} from '@/feature/select-game/context/use-select-game';
 import { useSyncSelectedGameToSearchParams } from '@/feature/select-game/hooks/use-sync-selected-game-to-search-params';
 import mockdata_games, { Game } from '@/mockdata/mockdata-games';
 
@@ -22,16 +24,12 @@ export const GameList = () => {
   useSyncSelectedGameToSearchParams(); // keeps side effects out of component body
 
   return (
-    <>
-      <Space height={20} />
-      <div className="game-list">
-        {mockdata_games.map((game) => (
-          <div onClick={() => selectGameHandler(game)} key={game.id}>
-            <GameCard {...game} isSelected={selectedGame?.id === game.id} />
-          </div>
-        ))}
-      </div>
-      <Space height={20} />
-    </>
+    <div className="game-list">
+      {mockdata_games.map((game) => (
+        <div onClick={() => selectGameHandler(game)} key={game.id}>
+          <GameCard {...game} isSelected={selectedGame?.id === game.id} />
+        </div>
+      ))}
+    </div>
   );
 };

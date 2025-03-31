@@ -1,29 +1,15 @@
-import { useSearchParams } from 'react-router-dom';
-
+import { Button } from '@/components/button';
 import Header from '@/components/header';
-import { TemplatePreview } from '@/feature/poster-customization/template-preview';
-import mockdata_games from '@/mockdata/mockdata-games';
-
-import NotFound from './not-found';
+import Space from '@/components/space';
+import { TemplatePreview } from '@/feature/poster-customization/components/template-preview';
 
 const PosterPage: React.FC = () => {
-  const [searchParams] = useSearchParams();
-  const gameId = searchParams.get('gameId')!;
-  const game = mockdata_games.find((game) => game.id === parseInt(gameId));
-  if (!game) {
-    // if have time, use ErrorBoundaries
-    return (
-      <>
-        <Header title="Poster" showBackButton={true} />
-        <NotFound />
-      </>
-    );
-  }
-
   return (
     <section>
       <Header title="Poster" showBackButton={true} />
-      <TemplatePreview {...game} />
+      <Space height={50} />
+      <TemplatePreview />
+      <Button fixed={true}>Download Poster</Button>
     </section>
   );
 };
