@@ -14,7 +14,12 @@ export interface PosterData {
   date: string;
   backgroundImage: string;
 }
-
+/*
+ ** - would definitely use a state management library like zustand or redux as
+ ** - lots of small state changes happen here.
+ ** - would use zustand for selective subscriptions, and cleaner separation of concerns
+ ** - but for now, just use context API. Context is getting a bit too big, but usable.
+ */
 interface PosterContentContextType {
   posterData: PosterData;
   setPosterData: Dispatch<SetStateAction<PosterData>>;
