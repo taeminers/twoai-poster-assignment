@@ -6,7 +6,7 @@ export type Game = {
   venue: string;
 };
 
-const mockData_games: Game[] = [
+const mockdata_games: Game[] = [
   {
     id: 1,
     teamA: 'Team A',
@@ -65,4 +65,4 @@ const mockData_games: Game[] = [
   },
 ];
 
-export default mockData_games;
+export default mockdata_games;

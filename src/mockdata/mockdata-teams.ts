@@ -10,7 +10,7 @@ export type Player = {
   name: string;
 };
 
-const mockData_teams: Team[] = [
+const mockdata_teams: Team[] = [
   {
     id: 1,
     name: 'Team A',
@@ -205,4 +205,4 @@ const mockData_teams: Team[] = [
   },
 ];
 
-export default mockData_teams;
+export default mockdata_teams;

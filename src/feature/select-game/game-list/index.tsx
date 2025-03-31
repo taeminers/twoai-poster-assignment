@@ -2,7 +2,7 @@ import './styles.scss';
 import Space from '@/components/space';
 import { useGameActions, useGameState } from '@/context/use-select-game';
 import { useSyncSelectedGameToSearchParams } from '@/feature/select-game/hooks/use-sync-selected-game-to-search-params';
-import mockData_games, { Game } from '@/mockdata/mockdata-games';
+import mockdata_games, { Game } from '@/mockdata/mockdata-games';
 
 import { GameCard } from '../game-card';
 
@@ -25,7 +25,7 @@ export const GameList = () => {
     <>
       <Space height={20} />
       <div className="game-list">
-        {mockData_games.map((game) => (
+        {mockdata_games.map((game) => (
           <div onClick={() => selectGameHandler(game)} key={game.id}>
             <GameCard {...game} isSelected={selectedGame?.id === game.id} />
           </div>
