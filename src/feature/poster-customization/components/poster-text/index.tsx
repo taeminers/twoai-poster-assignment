@@ -1,4 +1,4 @@
-import { usePosterContent } from '../../context/use-poster-content';
+import { usePosterContent } from '@/feature/poster-customization/context/use-poster-content';
 
 interface PosterTextProps {
   text: string;

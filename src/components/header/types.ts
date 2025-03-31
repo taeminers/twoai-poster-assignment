@@ -1,6 +1,6 @@
 export interface HeaderProps {
   title: string;
-  showBackButton?: boolean;
   className?: string;
-  children?: React.ReactNode;
+  leftIcon?: React.ReactNode;
+  rightIcon?: React.ReactNode;
 }

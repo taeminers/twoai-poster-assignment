@@ -1,3 +1,4 @@
+import { UploadPhoto } from '@/components/icons/upload-photo';
 import './styles.scss';
 import { PosterText } from '@/feature/poster-customization/components/poster-text';
 import { useEditPoster } from '@/feature/poster-customization/context/use-edit-poster';
@@ -7,6 +8,7 @@ export const PosterContent = () => {
   const { posterData, editingField } = usePosterContent();
   return (
     <div className="view-content">
+      <UploadPhoto />
       <div className="view-content__top">
         <div className="view-content__date">
           <PosterText

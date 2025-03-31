@@ -41,14 +41,13 @@
     transition: opacity 0.2s ease;
   }
 
-  &__back-button {
+  &__left-button {
     position: absolute;
     left: 16px;
     background: none;
     border: none;
-    padding: 8px;
-    cursor: pointer;
     color: #fff;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
