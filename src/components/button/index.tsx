@@ -1,8 +1,8 @@
-import React, { ButtonHTMLAttributes, ReactNode } from "react";
-import "./styles.scss";
+import React, { ButtonHTMLAttributes, ReactNode } from 'react';
+import './styles.scss';
 
-export type ButtonSize = "small" | "medium" | "large";
-export type ButtonVariant = "primary" | "secondary";
+export type ButtonSize = 'small' | 'medium' | 'large';
+export type ButtonVariant = 'primary' | 'secondary';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
@@ -72,28 +72,28 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
  */
 export const Button: React.FC<ButtonProps> = ({
   children,
-  size = "medium",
-  variant = "primary",
+  size = 'medium',
+  variant = 'primary',
   fullWidth = false,
   fixed = false,
   disabled = false,
   isLoading = false,
   startIcon,
   endIcon,
-  className = "",
+  className = '',
   ...restProps
 }) => {
   const buttonClasses = [
-    "button",
+    'button',
     `button--${size}`,
     `button--${variant}`,
-    fullWidth ? "button--full-width" : "",
-    fixed ? "button--fixed" : "",
-    isLoading ? "button--loading" : "",
+    fullWidth ? 'button--full-width' : '',
+    fixed ? 'button--fixed' : '',
+    isLoading ? 'button--loading' : '',
     className,
   ]
     .filter(Boolean)
-    .join(" ");
+    .join(' ');
 
   return (
     <button

@@ -1,8 +1,9 @@
-import { Routes, Route } from "react-router-dom";
-import Layout from "./components/Layout";
-import Home from "./pages/HomePage";
-import NotFound from "./pages/NotFound";
-import PosterPage from "./pages/PosterPage";
+import { Routes, Route } from 'react-router-dom';
+
+import Layout from './components/layout/layout';
+import Home from './pages/home-page';
+import NotFound from './pages/not-found';
+import PosterPage from './pages/poster-page';
 
 function App() {
   return (

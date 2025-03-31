@@ -1,5 +1,6 @@
-import { Game } from "@/mockdata/mockData";
-import { createContext, useState, Dispatch, SetStateAction } from "react";
+import { createContext, useState, Dispatch, SetStateAction } from 'react';
+
+import { Game } from '@/mockdata/mockdata-games';
 
 interface GameStateContextType {
   selectedGame: Game | null;
@@ -11,10 +12,10 @@ interface GameActionContextType {
 }
 
 export const GameStateContext = createContext<GameStateContextType | null>(
-  null
+  null,
 );
 export const GameActionContext = createContext<GameActionContextType | null>(
-  null
+  null,
 );
 
 export const SelectGameProvider = ({

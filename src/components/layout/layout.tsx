@@ -1,5 +1,5 @@
-import React from "react";
-import "../Global.scss";
+import React from 'react';
+import '@/global.scss';
 
 interface LayoutProps {
   children: React.ReactNode;

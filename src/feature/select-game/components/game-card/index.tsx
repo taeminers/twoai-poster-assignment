@@ -1,8 +1,7 @@
-import React from "react";
-import "./styles.scss";
+import React from 'react';
+import './styles.scss';
 
 interface GameCardProps {
-  id: number;
   teamA: string;
   teamB: string;
   date: string;
@@ -11,10 +10,9 @@ interface GameCardProps {
 }
 
 export const GameCard = React.memo(
-  ({ id, teamA, teamB, date, venue, isSelected }: GameCardProps) => {
-    console.log("gamecardrender");
+  ({ teamA, teamB, date, venue, isSelected }: GameCardProps) => {
     return (
-      <div className={`game-card ${isSelected ? "selected" : ""}`}>
+      <div className={`game-card ${isSelected ? 'selected' : ''}`}>
         <div className="game-card__teams">
           <div className="game-card__teams-text">{teamA}</div>
           <div>VS</div>
@@ -26,5 +24,5 @@ export const GameCard = React.memo(
         </div>
       </div>
     );
-  }
+  },
 );
