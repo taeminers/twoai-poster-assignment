@@ -11,7 +11,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/poster" element={<PosterPage />} />
-        <Route path="/download" element={<div>Download Page</div>} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Layout>
