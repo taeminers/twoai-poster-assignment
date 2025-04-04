@@ -4,6 +4,7 @@ export type Game = {
   teamB: string;
   date: string;
   venue: string;
+  photo?: string;
 };
 
 const mockdata_games: Game[] = [
@@ -62,6 +63,20 @@ const mockdata_games: Game[] = [
     teamB: 'Team P',
     date: '2024-01-08',
     venue: 'Villa Park',
+  },
+  {
+    id: 9,
+    teamA: 'Team Q',
+    teamB: 'Team R',
+    date: '2024-01-09',
+    venue: 'The Hawthorns',
+  },
+  {
+    id: 10,
+    teamA: 'Team S',
+    teamB: 'Team T',
+    date: '2024-01-10',
+    venue: 'The Emirates',
   },
 ];
 

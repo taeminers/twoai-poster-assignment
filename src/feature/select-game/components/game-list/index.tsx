@@ -6,6 +6,7 @@ import {
 import { useSyncSelectedGameToSearchParams } from '@/feature/select-game/hooks/use-sync-selected-game-to-search-params';
 import mockdata_games, { Game } from '@/mockdata/mockdata-games';
 
+import { useGetPhotos } from '../../hooks/use-get-photos';
 import { GameCard } from '../game-card';
 
 /**
@@ -20,11 +21,16 @@ export const GameList = () => {
     setSelectedGame((prev) => (prev?.id === game.id ? null : game));
   };
   useSyncSelectedGameToSearchParams(); // keeps side effects out of component body
+  const { photoData } = useGetPhotos();
   return (
     <div className="game-list">
-      {mockdata_games.map((game) => (
+      {mockdata_games.map((game, index) => (
         <div onClick={() => selectGameHandler(game)} key={game.id}>
-          <GameCard {...game} isSelected={selectedGame?.id === game.id} />
+          <GameCard
+            {...game}
+            isSelected={selectedGame?.id === game.id}
+            photo={game.photo || photoData?.[index]?.urls?.regular || ''}
+          />
         </div>
       ))}
     </div>
