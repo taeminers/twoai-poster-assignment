@@ -16,7 +16,6 @@ export const GameCard = React.memo(
       <div className={`game-card ${isSelected ? 'selected' : ''}`}>
         <img src={photo} alt="game" className="game-card__photo" />
         <div className="game-card__desc">
-          {' '}
           <div className="game-card__teams">
             <div className="game-card__teams-text">{teamA}</div>
             <div>VS</div>
