@@ -23,7 +23,6 @@ export const PosterText = ({
     handleCancelEdit,
     handleTextClick,
   } = usePosterContent();
-
   return (
     <div>
       {editingField === field ? (

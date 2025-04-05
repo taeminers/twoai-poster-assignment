@@ -203,6 +203,54 @@ const mockdata_teams: Team[] = [
       { id: 5, name: 'Yorick' },
     ],
   },
+  {
+    id: 17,
+    name: 'Team Q',
+    slogan: 'We are the champions',
+    players: [
+      { id: 1, name: 'Zach' },
+      { id: 2, name: 'Zane' },
+      { id: 3, name: 'Zane' },
+      { id: 4, name: 'Zane' },
+      { id: 5, name: 'Zane' },
+    ],
+  },
+  {
+    id: 18,
+    name: 'Team R',
+    slogan: 'We are the champions',
+    players: [
+      { id: 1, name: 'Yusuf' },
+      { id: 2, name: 'Yohannes' },
+      { id: 3, name: 'Berg' },
+      { id: 4, name: 'Philip' },
+      { id: 5, name: 'Biling' },
+    ],
+  },
+  {
+    id: 19,
+    name: 'Team S',
+    slogan: 'We are the champions',
+    players: [
+      { id: 1, name: 'Lulu' },
+      { id: 2, name: 'Agbe' },
+      { id: 3, name: 'Jode' },
+      { id: 4, name: 'Jobe' },
+      { id: 5, name: 'Bellingham' },
+    ],
+  },
+  {
+    id: 20,
+    name: 'Team T',
+    slogan: 'We are the champions',
+    players: [
+      { id: 1, name: 'Modric' },
+      { id: 2, name: 'Endrick' },
+      { id: 3, name: 'Dias' },
+      { id: 4, name: 'Foden' },
+      { id: 5, name: 'Lahm' },
+    ],
+  },
 ];
 
 export default mockdata_teams;

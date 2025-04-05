@@ -20,6 +20,13 @@ export interface PosterData {
  ** - would use zustand for selective subscriptions, and cleaner separation of concerns
  ** - but for now, just use context API. Context is getting a bit too big, but usable.
  */
+
+/*
+ ** - 1. Click a field -> handleTextClick -> Sets up Editing State
+ ** - 2. Type Changes -> handleInputChange -> Updates Temp Value
+ ** - 3. Click Save -> handleSaveEdit -> Updates Actual Poster Data
+ ** - 4. Click Cancel -> handleCancelEdit -> Clears Editing State
+ */
 interface PosterContentContextType {
   posterData: PosterData;
   setPosterData: Dispatch<SetStateAction<PosterData>>;
@@ -47,21 +54,28 @@ export const PosterContentProvider = ({
   if (!firstTeam || !secondTeam || !game?.venue || !game?.date) {
     return null;
   }
+  // tempValue is used to store the value of the input field when it is being edited
   const [tempValue, setTempValue] = useState<string>('');
+  // editingField is used to track which field is being edited
   const [editingField, setEditingField] = useState<string | null>(null);
+  // set which field is being edited and the value of the field. Copies current value to the tempvalue
   const handleTextClick = (field: string) => {
     setEditingField(field);
     setTempValue(String(getFieldValue(posterData, field)));
   };
+  // updates the temp value as we type
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setTempValue(e.target.value);
   };
+  // update the actual poster data with the tempvalue(the value being typed). Then clears the editing state.
   const handleSaveEdit = () => {
     if (editingField) {
       setPosterData((prev) => setFieldValue(prev, editingField, tempValue));
       setEditingField(null);
     }
   };
+
+  // cancels the edit and clears the editing state
   const handleCancelEdit = () => {
     setEditingField(null);
   };
