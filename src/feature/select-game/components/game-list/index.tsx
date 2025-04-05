@@ -22,6 +22,7 @@ export const GameList = () => {
   };
   useSyncSelectedGameToSearchParams(); // keeps side effects out of component body
   const { photoData } = useGetPhotos();
+
   return (
     <div className="game-list">
       {mockdata_games.map((game, index) => (

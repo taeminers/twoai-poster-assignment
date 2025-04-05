@@ -26,6 +26,7 @@ Rules (bulletproof-react)
 - Filename and Folder name convention (kebab-case)
 
 Other things to Note.
+
 -Tried to make components follow SOLID principles.
 
 - Used CRACO for alias imports.
@@ -79,6 +80,8 @@ src/
 ```
 
 Inside each feature, we have the following file structure
+
+```
 feature-name/
 ├── components/ # Non-reusable components used for the feature.
 │ ├── index.tsx/ # Component Code
@@ -86,6 +89,7 @@ feature-name/
 ├── context/ # context used for feature
 ├── hooks/ # hooks used for feature
 └── helpers/ # helpers used for this feature
+
 
 ## Usage
 
