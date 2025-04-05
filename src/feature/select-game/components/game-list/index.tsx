@@ -30,7 +30,7 @@ export const GameList = () => {
           <GameCard
             {...game}
             isSelected={selectedGame?.id === game.id}
-            photo={game.photo || photoData?.[index]?.urls?.regular || ''}
+            photo={photoData?.[index]?.urls?.regular || ''}
           />
         </div>
       ))}
