@@ -5,6 +5,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useEditPoster } from '@/feature/poster-customization/context/use-edit-poster';
 import { usePosterContent } from '@/feature/poster-customization/context/use-poster-content';
 import { getBackgroundStyle } from '@/feature/poster-customization/helpers/get-background-style';
+import { useDownloadPoster } from '@/feature/poster-download/context/use-download-poster';
 import mockdata_games from '@/mockdata/mockdata-games';
 
 import { useUpdateDimensions } from '../../hooks/use-update-dimensions';
@@ -19,6 +20,7 @@ import './styles.scss';
  */
 
 export const Canvas = () => {
+  const { posterRef } = useDownloadPoster();
   const containerRef = useRef<HTMLDivElement>(null);
   const dimensions = useUpdateDimensions(containerRef);
   const { posterData } = usePosterContent();
@@ -36,6 +38,9 @@ export const Canvas = () => {
         width={dimensions.width}
         height={dimensions.height}
         style={backgroundStyle}
+        ref={(node) => {
+          posterRef.current = node;
+        }}
       >
         {isEditMode ? (
           <CanvasEditContent dimensions={dimensions} posterData={posterData} />
