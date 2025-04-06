@@ -1,12 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { Layer, Rect, Stage } from 'react-konva';
-import { useSearchParams } from 'react-router-dom';
 import useImage from 'use-image';
 
+import { ImageUploader } from '@/feature/poster-customization/components/image-uploader';
 import { useEditPoster } from '@/feature/poster-customization/context/use-edit-poster';
 import { usePosterContent } from '@/feature/poster-customization/context/use-poster-content';
 import { useDownloadPoster } from '@/feature/poster-download/context/use-download-poster';
-import mockdata_games from '@/mockdata/mockdata-games';
 
 import { useUpdateDimensions } from '../../hooks/use-update-dimensions';
 import { CanvasEditContent } from '../canvas-edit-content';
@@ -24,23 +23,18 @@ export const Canvas = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const dimensions = useUpdateDimensions(containerRef);
   const { posterData } = usePosterContent();
-  const [searchParams] = useSearchParams();
-  const [posterBackground] = useImage(
-    mockdata_games[parseInt(searchParams.get('gameId') || '0') - 1].photo,
-    'anonymous',
-  );
+  const [posterBackground] = useImage(posterData.backgroundImage, 'anonymous');
   const [image, setImage] = useState<HTMLImageElement | undefined>(undefined);
-  const gameId = searchParams.get('gameId');
   const { isEditMode } = useEditPoster();
-  if (!gameId) return null;
   useEffect(() => {
-    // set rect layer of background image
+    // set rect layer of background image, and if user uploads a new image, set the image to the new image
     if (posterBackground) {
       setImage(posterBackground);
     }
   }, [posterBackground]);
   return (
     <div ref={containerRef} className="canvas__container">
+      <ImageUploader isEditMode={isEditMode} />
       <Stage
         width={dimensions.width}
         height={dimensions.height}

@@ -51,7 +51,7 @@ export const PosterContentProvider = ({
     teamB: secondTeam,
     venue: game?.venue,
     date: game?.date,
-    backgroundImage: '',
+    backgroundImage: game?.photo,
   });
   return (
     <PosterContentContext.Provider

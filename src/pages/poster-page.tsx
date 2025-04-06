@@ -13,7 +13,7 @@ const PosterPage: React.FC = () => {
     <EditPosterProvider>
       <PosterContentProvider>
         <DownloadPosterProvider>
-          <section>
+          <section id="poster-page">
             <Header
               title="Poster"
               leftIcon={<ArrowLeft />}
