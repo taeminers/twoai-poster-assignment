@@ -1,4 +1,5 @@
 import './styles.scss';
+
 import {
   useGameActions,
   useGameState,
@@ -21,16 +22,12 @@ export const GameList = () => {
     setSelectedGame((prev) => (prev?.id === game.id ? null : game));
   };
   useSyncSelectedGameToSearchParams(); // keeps side effects out of component body
-  const { photoData } = useGetPhotos();
+  useGetPhotos();
   return (
     <div className="game-list">
-      {mockdata_games.map((game, index) => (
+      {mockdata_games.map((game) => (
         <div onClick={() => selectGameHandler(game)} key={game.id}>
-          <GameCard
-            {...game}
-            isSelected={selectedGame?.id === game.id}
-            photo={photoData?.[index]?.urls?.regular || ''}
-          />
+          <GameCard {...game} isSelected={selectedGame?.id === game.id} />
         </div>
       ))}
     </div>

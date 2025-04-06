@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { createApi } from 'unsplash-js';
 
+import mockdata_games from '@/mockdata/mockdata-games';
+
 const api = createApi({
   accessKey: process.env.REACT_APP_UNSPLASH_ACCESS_KEY || '',
 });
@@ -14,7 +16,12 @@ export const useGetPhotos = () => {
         query: 'sports games',
         orientation: 'landscape',
       })
-      .then((result) => setPhotoData(result.response?.results))
+      .then((result) => {
+        setPhotoData(result.response?.results);
+        mockdata_games.forEach((game, index) => {
+          game.photo = result.response?.results[index]?.urls?.regular || '';
+        });
+      })
       .catch(() => {
         console.log('error');
       });
