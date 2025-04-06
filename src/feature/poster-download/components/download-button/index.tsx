@@ -15,11 +15,15 @@ export const DownloadButton = () => {
   };
   const handleExport = () => {
     if (posterRef.current) {
-      const uri = posterRef.current.getStage().toDataURL();
+      const uri = posterRef.current.getStage().toDataURL({
+        mimeType: 'image/png',
+        quality: 1,
+      });
       // we also can save uri as file
       downloadUri(uri, 'gameday-poster.png');
     }
   };
+
   return (
     <Button disabled={isEditMode} fixed={true} onClick={handleExport}>
       Download

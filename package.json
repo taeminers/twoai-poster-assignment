@@ -20,6 +20,7 @@
     "react-scripts": "5.0.1",
     "sass": "^1.86.0",
     "unsplash-js": "^7.0.19",
+    "use-image": "^1.1.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

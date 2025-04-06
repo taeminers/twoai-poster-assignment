@@ -1,10 +1,10 @@
-import { useRef } from 'react';
-import { Stage } from 'react-konva';
+import { useEffect, useRef, useState } from 'react';
+import { Layer, Rect, Stage } from 'react-konva';
 import { useSearchParams } from 'react-router-dom';
+import useImage from 'use-image';
 
 import { useEditPoster } from '@/feature/poster-customization/context/use-edit-poster';
 import { usePosterContent } from '@/feature/poster-customization/context/use-poster-content';
-import { getBackgroundStyle } from '@/feature/poster-customization/helpers/get-background-style';
 import { useDownloadPoster } from '@/feature/poster-download/context/use-download-poster';
 import mockdata_games from '@/mockdata/mockdata-games';
 
@@ -25,23 +25,40 @@ export const Canvas = () => {
   const dimensions = useUpdateDimensions(containerRef);
   const { posterData } = usePosterContent();
   const [searchParams] = useSearchParams();
+  const [posterBackground] = useImage(
+    mockdata_games[parseInt(searchParams.get('gameId') || '0') - 1].photo,
+    'anonymous',
+  );
+  const [image, setImage] = useState<HTMLImageElement | undefined>(undefined);
   const gameId = searchParams.get('gameId');
   const { isEditMode } = useEditPoster();
   if (!gameId) return null;
-  const backgroundStyle = getBackgroundStyle(
-    mockdata_games[parseInt(gameId) - 1].photo,
-  );
-
+  useEffect(() => {
+    // set rect layer of background image
+    if (posterBackground) {
+      setImage(posterBackground);
+    }
+  }, [posterBackground]);
   return (
     <div ref={containerRef} className="canvas__container">
       <Stage
         width={dimensions.width}
         height={dimensions.height}
-        style={backgroundStyle}
         ref={(node) => {
           posterRef.current = node;
         }}
       >
+        <Layer>
+          {image && (
+            <Rect
+              width={dimensions.width}
+              height={dimensions.height}
+              fillPatternImage={image}
+              fillPatternScaleX={dimensions.width / image.width}
+              fillPatternScaleY={dimensions.height / image.height}
+            />
+          )}
+        </Layer>
         {isEditMode ? (
           <CanvasEditContent dimensions={dimensions} posterData={posterData} />
         ) : (
