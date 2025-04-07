@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { Layer, Stage } from 'react-konva';
 
 import { ImageUploader } from '@/feature/poster-customization/components/image-uploader';
@@ -6,6 +6,7 @@ import { usePosterContent } from '@/feature/poster-customization/context/use-pos
 import { useDownloadPoster } from '@/feature/poster-download/context/use-download-poster';
 
 import { useUpdateDimensions } from '../../hooks/use-update-dimensions';
+import { AddedImages } from '../added-images';
 import { CanvasEditContent } from '../canvas-edit-content';
 import { CanvasPhoto } from '../canvas-photo';
 import './styles.scss';
@@ -17,11 +18,20 @@ import { GetDynamicImages } from '../get-dynamic-images';
  */
 
 export const Canvas = () => {
-  // set up initial canvas
-  const { posterRef } = useDownloadPoster(); // used for downloading canvas
-  const containerRef = useRef<HTMLDivElement>(null); // used for updating dimensions
-  const dimensions = useUpdateDimensions(containerRef); // used for updating dimensions
-  const { posterData } = usePosterContent(); // used for getting poster data
+  const { posterRef } = useDownloadPoster();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const dimensions = useUpdateDimensions(containerRef);
+  const { posterData } = usePosterContent();
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const checkDeselect = (e: any) => {
+    // Check if clicked on background image or stage
+    const clickedOnBackground = e.target.attrs.id === 'background';
+    const clickedOnStage = e.target === e.target.getStage();
+    if (clickedOnBackground || clickedOnStage) {
+      setSelectedId(null);
+    }
+  };
+
   return (
     <div ref={containerRef} className="canvas__container">
       <GetDynamicImages />
@@ -32,15 +42,24 @@ export const Canvas = () => {
         ref={(node) => {
           posterRef.current = node;
         }}
+        onMouseDown={checkDeselect}
+        onTouchStart={checkDeselect}
       >
         <Layer>
+          {/* Add background image */}
           <CanvasPhoto
+            id="background"
             photoUrl={posterData.backgroundImage}
             width={dimensions.width}
             height={dimensions.height}
             draggable={false}
           />
         </Layer>
+        <AddedImages
+          dimensions={dimensions}
+          selectedId={selectedId}
+          setSelectedId={setSelectedId}
+        />
         <CanvasEditContent dimensions={dimensions} posterData={posterData} />
       </Stage>
     </div>

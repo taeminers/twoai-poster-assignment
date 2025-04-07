@@ -1,0 +1,13 @@
+.dynamic-images__container {
+  display: flex;
+  gap: 10px;
+}
+
+.dynamic-images__picture--selected {
+  border: 2px solid #000;
+}
+
+.dynamic-images__form {
+  display: flex;
+  gap: 10px;
+}

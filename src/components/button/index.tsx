@@ -60,6 +60,12 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
    * Additional class name
    */
   className?: string;
+
+  /**
+   * Button type
+   * @default 'button'
+   */
+  type?: 'button' | 'submit' | 'reset';
 }
 
 /**
@@ -81,6 +87,7 @@ export const Button: React.FC<ButtonProps> = ({
   startIcon,
   endIcon,
   className = '',
+  type = 'button',
   ...restProps
 }) => {
   const buttonClasses = [
@@ -99,7 +106,7 @@ export const Button: React.FC<ButtonProps> = ({
     <button
       className={buttonClasses}
       disabled={disabled || isLoading}
-      type="button"
+      type={type}
       {...restProps}
     >
       {isLoading && <span className="button__loader" />}
