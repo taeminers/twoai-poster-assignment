@@ -1,4 +1,5 @@
 import React from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 
 import Space from '@/components/space';
 import { SelectButton } from '@/feature/select-game/components/select-button';
@@ -17,7 +18,12 @@ const Home: React.FC = () => {
       <section>
         <Header title="GameDay" />
         <Space height={20} />
-        <GameList />
+        <ErrorBoundary
+          fallback={<div>Error Has Occured</div>}
+          onError={() => console.log('error encountered')}
+        >
+          <GameList />
+        </ErrorBoundary>
         <Space height={20} />
         <SelectButton />
       </section>

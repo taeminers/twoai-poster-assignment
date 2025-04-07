@@ -4,13 +4,16 @@ import './styles.scss';
 import { UploadPhoto } from '@/components/icons/upload-photo';
 import { usePosterContent } from '@/feature/poster-customization/context/use-poster-content';
 
+import { useEditPoster } from '../../context/use-edit-poster';
+
 /*
  ** - if we were to persist state of posterData, i would use URL.createObjectURL(file)
  ** - but we are not persisting state, so i'm using the fileReader to get the dataURL
  */
-export const ImageUploader = ({ isEditMode }: { isEditMode: boolean }) => {
+export const ImageUploader = () => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const { posterData, setPosterData } = usePosterContent();
+  const { isEditMode } = useEditPoster();
   const handleClick = () => {
     fileInputRef.current?.click();
   };

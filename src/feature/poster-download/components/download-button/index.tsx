@@ -1,24 +1,31 @@
-import html2canvas from 'html2canvas';
-
 import { Button } from '@/components/button';
 import { useEditPoster } from '@/feature/poster-customization/context/use-edit-poster';
 import { useDownloadPoster } from '@/feature/poster-download/context/use-download-poster';
+
 export const DownloadButton = () => {
   const { isEditMode } = useEditPoster();
   const { posterRef } = useDownloadPoster();
-  const downloadHandler = () => {
+  const downloadUri = (uri: string, name: string) => {
+    const link = document.createElement('a');
+    link.download = name;
+    link.href = uri;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+  const handleExport = () => {
     if (posterRef.current) {
-      html2canvas(posterRef.current).then((canvas) => {
-        const image = canvas.toDataURL('image/png');
-        const link = document.createElement('a');
-        link.download = 'poster.png';
-        link.href = image;
-        link.click();
+      const uri = posterRef.current.getStage().toDataURL({
+        mimeType: 'image/png',
+        quality: 1,
       });
+      // we also can save uri as file
+      downloadUri(uri, 'gameday-poster.png');
     }
   };
+
   return (
-    <Button disabled={isEditMode} fixed={true} onClick={downloadHandler}>
+    <Button disabled={isEditMode} fixed={true} onClick={handleExport}>
       Download
     </Button>
   );

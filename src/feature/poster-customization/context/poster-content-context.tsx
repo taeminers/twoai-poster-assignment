@@ -1,10 +1,9 @@
-import { ChangeEvent, createContext, useState } from 'react';
+import { createContext, useState } from 'react';
 import { Dispatch, SetStateAction } from 'react';
 
 import { Team } from '@/mockdata/mockdata-teams';
 import mockdata_teams from '@/mockdata/mockdata-teams';
 
-import { getFieldValue, setFieldValue } from '../helpers/get-set-field-value';
 import { usePosterData } from '../hooks/use-poster-data';
 
 export interface PosterData {
@@ -30,14 +29,6 @@ export interface PosterData {
 interface PosterContentContextType {
   posterData: PosterData;
   setPosterData: Dispatch<SetStateAction<PosterData>>;
-  tempValue: string;
-  setTempValue: Dispatch<SetStateAction<string>>;
-  editingField: string | null;
-  setEditingField: Dispatch<SetStateAction<string | null>>;
-  handleTextClick: (field: string) => void;
-  handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  handleSaveEdit: () => void;
-  handleCancelEdit: () => void;
 }
 
 export const PosterContentContext =
@@ -54,51 +45,19 @@ export const PosterContentProvider = ({
   if (!firstTeam || !secondTeam || !game?.venue || !game?.date) {
     return null;
   }
-  // tempValue is used to store the value of the input field when it is being edited
-  const [tempValue, setTempValue] = useState<string>('');
-  // editingField is used to track which field is being edited
-  const [editingField, setEditingField] = useState<string | null>(null);
-  // set which field is being edited and the value of the field. Copies current value to the tempvalue
-  const handleTextClick = (field: string) => {
-    setEditingField(field);
-    setTempValue(String(getFieldValue(posterData, field)));
-  };
-  // updates the temp value as we type
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setTempValue(e.target.value);
-  };
-  // update the actual poster data with the tempvalue(the value being typed). Then clears the editing state.
-  const handleSaveEdit = () => {
-    if (editingField) {
-      setPosterData((prev) => setFieldValue(prev, editingField, tempValue));
-      setEditingField(null);
-    }
-  };
 
-  // cancels the edit and clears the editing state
-  const handleCancelEdit = () => {
-    setEditingField(null);
-  };
   const [posterData, setPosterData] = useState<PosterData>({
     teamA: firstTeam,
     teamB: secondTeam,
     venue: game?.venue,
     date: game?.date,
-    backgroundImage: '',
+    backgroundImage: game?.photo,
   });
   return (
     <PosterContentContext.Provider
       value={{
         posterData,
         setPosterData,
-        tempValue,
-        setTempValue,
-        editingField,
-        setEditingField,
-        handleTextClick,
-        handleInputChange,
-        handleSaveEdit,
-        handleCancelEdit,
       }}
     >
       {children}

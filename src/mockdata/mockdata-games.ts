@@ -4,7 +4,7 @@ export type Game = {
   teamB: string;
   date: string;
   venue: string;
-  photo?: string;
+  photo: string;
 };
 
 const mockdata_games: Game[] = [
@@ -14,6 +14,7 @@ const mockdata_games: Game[] = [
     teamB: 'Team B',
     date: '2024-01-01',
     venue: 'Wembley Stadium',
+    photo: '',
   },
   {
     id: 2,
@@ -21,6 +22,7 @@ const mockdata_games: Game[] = [
     teamB: 'Team D',
     date: '2024-01-02',
     venue: 'Old Trafford',
+    photo: '',
   },
   {
     id: 3,
@@ -28,6 +30,7 @@ const mockdata_games: Game[] = [
     teamB: 'Team F',
     date: '2024-01-03',
     venue: 'Stamford Bridge',
+    photo: '',
   },
   {
     id: 4,
@@ -35,6 +38,7 @@ const mockdata_games: Game[] = [
     teamB: 'Team H',
     date: '2024-01-04',
     venue: 'Etihad Stadium',
+    photo: '',
   },
   {
     id: 5,
@@ -42,6 +46,7 @@ const mockdata_games: Game[] = [
     teamB: 'Team J',
     date: '2024-01-05',
     venue: 'Anfield',
+    photo: '',
   },
   {
     id: 6,
@@ -49,6 +54,7 @@ const mockdata_games: Game[] = [
     teamB: 'Team L',
     date: '2024-01-06',
     venue: 'Emirates Stadium',
+    photo: '',
   },
   {
     id: 7,
@@ -56,6 +62,7 @@ const mockdata_games: Game[] = [
     teamB: 'Team N',
     date: '2024-01-07',
     venue: "St. Mary's Stadium",
+    photo: '',
   },
   {
     id: 8,
@@ -63,6 +70,7 @@ const mockdata_games: Game[] = [
     teamB: 'Team P',
     date: '2024-01-08',
     venue: 'Villa Park',
+    photo: '',
   },
   {
     id: 9,
@@ -70,6 +78,7 @@ const mockdata_games: Game[] = [
     teamB: 'Team R',
     date: '2024-01-09',
     venue: 'The Hawthorns',
+    photo: '',
   },
   {
     id: 10,
@@ -77,6 +86,7 @@ const mockdata_games: Game[] = [
     teamB: 'Team T',
     date: '2024-01-10',
     venue: 'The Emirates',
+    photo: '',
   },
 ];
 

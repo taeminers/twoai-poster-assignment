@@ -1,7 +1,8 @@
+import { Stage } from 'konva/lib/Stage';
 import { createContext, RefObject, useRef } from 'react';
 
 interface DownloadPosterContextType {
-  posterRef: RefObject<HTMLDivElement | null>;
+  posterRef: RefObject<Stage | null>;
 }
 
 export const DownloadPosterContext = createContext<DownloadPosterContextType>({
@@ -13,7 +14,7 @@ export const DownloadPosterProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const posterRef = useRef<HTMLDivElement>(null);
+  const posterRef = useRef<Stage | null>(null);
   return (
     <DownloadPosterContext.Provider value={{ posterRef }}>
       {children}
