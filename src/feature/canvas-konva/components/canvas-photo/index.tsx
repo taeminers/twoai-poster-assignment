@@ -38,7 +38,6 @@ export const CanvasPhoto = ({
   }, [isSelected]);
 
   if (!image) return null;
-  console.log('isSelected', isSelected);
   return (
     <>
       <Image
