@@ -1,17 +1,15 @@
-import { useEffect, useRef, useState } from 'react';
-import { Layer, Rect, Stage } from 'react-konva';
-import useImage from 'use-image';
+import { useRef } from 'react';
+import { Layer, Stage } from 'react-konva';
 
 import { ImageUploader } from '@/feature/poster-customization/components/image-uploader';
-import { useEditPoster } from '@/feature/poster-customization/context/use-edit-poster';
 import { usePosterContent } from '@/feature/poster-customization/context/use-poster-content';
 import { useDownloadPoster } from '@/feature/poster-download/context/use-download-poster';
 
 import { useUpdateDimensions } from '../../hooks/use-update-dimensions';
 import { CanvasEditContent } from '../canvas-edit-content';
-import { CanvasPreview } from '../canvas-preview';
-
+import { CanvasPhoto } from '../canvas-photo';
 import './styles.scss';
+import { GetDynamicImages } from '../get-dynamic-images';
 
 /*
  ** - 1. Canvas element for the poster using konva
@@ -19,22 +17,15 @@ import './styles.scss';
  */
 
 export const Canvas = () => {
-  const { posterRef } = useDownloadPoster();
-  const containerRef = useRef<HTMLDivElement>(null);
-  const dimensions = useUpdateDimensions(containerRef);
-  const { posterData } = usePosterContent();
-  const [posterBackground] = useImage(posterData.backgroundImage, 'anonymous');
-  const [image, setImage] = useState<HTMLImageElement | undefined>(undefined);
-  const { isEditMode } = useEditPoster();
-  useEffect(() => {
-    // set rect layer of background image, and if user uploads a new image, set the image to the new image
-    if (posterBackground) {
-      setImage(posterBackground);
-    }
-  }, [posterBackground]);
+  // set up initial canvas
+  const { posterRef } = useDownloadPoster(); // used for downloading canvas
+  const containerRef = useRef<HTMLDivElement>(null); // used for updating dimensions
+  const dimensions = useUpdateDimensions(containerRef); // used for updating dimensions
+  const { posterData } = usePosterContent(); // used for getting poster data
   return (
     <div ref={containerRef} className="canvas__container">
-      <ImageUploader isEditMode={isEditMode} />
+      <GetDynamicImages />
+      <ImageUploader />
       <Stage
         width={dimensions.width}
         height={dimensions.height}
@@ -43,21 +34,14 @@ export const Canvas = () => {
         }}
       >
         <Layer>
-          {image && (
-            <Rect
-              width={dimensions.width}
-              height={dimensions.height}
-              fillPatternImage={image}
-              fillPatternScaleX={dimensions.width / image.width}
-              fillPatternScaleY={dimensions.height / image.height}
-            />
-          )}
+          <CanvasPhoto
+            photoUrl={posterData.backgroundImage}
+            width={dimensions.width}
+            height={dimensions.height}
+            draggable={false}
+          />
         </Layer>
-        {isEditMode ? (
-          <CanvasEditContent dimensions={dimensions} posterData={posterData} />
-        ) : (
-          <CanvasPreview dimensions={dimensions} posterData={posterData} />
-        )}
+        <CanvasEditContent dimensions={dimensions} posterData={posterData} />
       </Stage>
     </div>
   );

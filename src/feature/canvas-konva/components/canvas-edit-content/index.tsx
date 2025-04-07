@@ -2,6 +2,7 @@ import { Layer } from 'react-konva';
 
 import { Dimensions } from '@/feature/canvas-konva/hooks/use-update-dimensions';
 import { PosterData } from '@/feature/poster-customization/context/poster-content-context';
+import { useEditPoster } from '@/feature/poster-customization/context/use-edit-poster';
 import { usePosterContent } from '@/feature/poster-customization/context/use-poster-content';
 
 import { CanvasText } from '../canvas-text';
@@ -16,6 +17,7 @@ export const CanvasEditContent = ({
   posterData,
 }: CanvasEditContentProps) => {
   const { setPosterData } = usePosterContent();
+  const { isEditMode } = useEditPoster();
   return (
     <Layer>
       <CanvasText
@@ -28,6 +30,7 @@ export const CanvasEditContent = ({
         onTextChange={(text) => {
           setPosterData({ ...posterData, venue: text });
         }}
+        isEditMode={isEditMode}
       />
       <CanvasText
         text={posterData.date}
@@ -39,6 +42,7 @@ export const CanvasEditContent = ({
         onTextChange={(text) => {
           setPosterData({ ...posterData, date: text });
         }}
+        isEditMode={isEditMode}
       />
       <CanvasText
         text={posterData.teamA.name}
@@ -53,6 +57,7 @@ export const CanvasEditContent = ({
             teamA: { ...posterData.teamA, name: text },
           });
         }}
+        isEditMode={isEditMode}
       />
       <CanvasText
         text={posterData.teamB.name}
@@ -67,6 +72,7 @@ export const CanvasEditContent = ({
             teamB: { ...posterData.teamB, name: text },
           });
         }}
+        isEditMode={isEditMode}
       />
       <CanvasText
         text={posterData.teamA.slogan}
@@ -81,6 +87,7 @@ export const CanvasEditContent = ({
             teamA: { ...posterData.teamA, slogan: text },
           });
         }}
+        isEditMode={isEditMode}
       />
       <CanvasText
         text={posterData.teamB.slogan}
@@ -95,6 +102,7 @@ export const CanvasEditContent = ({
             teamB: { ...posterData.teamB, slogan: text },
           });
         }}
+        isEditMode={isEditMode}
       />
       {posterData.teamA.players.map((player, index) => (
         <CanvasText
@@ -116,6 +124,7 @@ export const CanvasEditContent = ({
               },
             });
           }}
+          isEditMode={isEditMode}
         />
       ))}
       {posterData.teamB.players.map((player, index) => (
@@ -138,6 +147,7 @@ export const CanvasEditContent = ({
               },
             });
           }}
+          isEditMode={isEditMode}
         />
       ))}
     </Layer>

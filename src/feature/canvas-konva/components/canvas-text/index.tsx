@@ -9,6 +9,7 @@ interface CanvasTextProps {
   fill?: string;
   draggable?: boolean;
   width?: number;
+  isEditMode?: boolean;
   onTextChange?: (newText: string) => void;
 }
 
@@ -21,6 +22,7 @@ export const CanvasText = ({
   draggable = true,
   width = 200,
   onTextChange,
+  isEditMode = false,
 }: CanvasTextProps) => {
   const [textValue, setTextValue] = useState(text);
   const textRef = useRef<any>(null);
@@ -34,7 +36,7 @@ export const CanvasText = ({
   }, []);
 
   const handleDblClick = () => {
-    if (!textRef.current) return;
+    if (!textRef.current || !isEditMode) return;
 
     const textNode = textRef.current;
     const stage = textNode.getStage();
@@ -148,7 +150,7 @@ export const CanvasText = ({
         text={textValue}
         fontSize={fontSize}
         fill={fill}
-        draggable={draggable}
+        draggable={draggable && isEditMode}
         width={width}
         onDblClick={handleDblClick}
         onTransform={() => {
@@ -161,14 +163,16 @@ export const CanvasText = ({
           }
         }}
       />
-      <Transformer
-        ref={trRef}
-        enabledAnchors={['middle-left', 'middle-right']}
-        boundBoxFunc={(oldBox, newBox) => {
-          newBox.width = Math.max(30, newBox.width);
-          return newBox;
-        }}
-      />
+      {isEditMode && (
+        <Transformer
+          ref={trRef}
+          enabledAnchors={['middle-left', 'middle-right']}
+          boundBoxFunc={(oldBox, newBox) => {
+            newBox.width = Math.max(30, newBox.width);
+            return newBox;
+          }}
+        />
+      )}
     </>
   );
 };

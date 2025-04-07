@@ -3,7 +3,7 @@ import { createApi } from 'unsplash-js';
 
 import mockdata_games from '@/mockdata/mockdata-games';
 
-const api = createApi({
+export const api = createApi({
   accessKey: process.env.REACT_APP_UNSPLASH_ACCESS_KEY || '',
 });
 
