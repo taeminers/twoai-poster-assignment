@@ -74,6 +74,8 @@ src/
 │   ├── poster-customization/  # Poster editing features
 │   └── poster-download/       # Poster download features
 |   |__ select-game/           # select game feature
+├── hooks/          # General hooks that are reusable
+├── providers/          # Providers used in page level
 ├── mockdata/          # Mock data for teams and players
 └── pages/           # Pages components
 ```

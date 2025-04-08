@@ -3,6 +3,15 @@ import React from 'react';
 import './styles.scss';
 import { HeaderProps } from './types';
 
+/**
+ * Header component
+ * @param title - The title of the header
+ * @param className - The className of the header
+ * @param leftIcon - The left icon of the header
+ * @param rightIcon - The right icon of the header
+ * @param onLeftIconClick - The onClick event of the left icon
+ * Follows SOLID principles.
+ */
 const Header: React.FC<HeaderProps> = ({
   title,
   className = '',

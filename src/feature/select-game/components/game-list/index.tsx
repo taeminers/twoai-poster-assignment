@@ -11,7 +11,7 @@ import { useGetPhotos } from '../../hooks/use-get-photos';
 import { GameCard } from '../game-card';
 
 /**
- * Make sure GameCard component does not render because of context API
+ * Make sure GameCard component does not re-render because of context API
  * putting div around gamecard to handle context API re-rendering issue.
  * click again to unselect
  */

@@ -1,4 +1,3 @@
-import { ErrorBoundary } from 'react-error-boundary';
 import { useNavigate } from 'react-router-dom';
 
 import Header from '@/components/header';
