@@ -3,4 +3,6 @@ export interface HeaderProps {
   className?: string;
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
+  onLeftIconClick?: () => void;
+  onRightIconClick?: () => void;
 }

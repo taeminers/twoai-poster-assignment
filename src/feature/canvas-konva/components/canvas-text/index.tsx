@@ -12,7 +12,11 @@ interface CanvasTextProps {
   isEditMode?: boolean;
   onTextChange?: (newText: string) => void;
 }
-
+/*
+ ** - Custom Text Component for konva
+ ** - Konva does not have a default text component, so this was created to be used in the canvas
+ ** - Added a transformer to allow for changing text
+ */
 export const CanvasText = ({
   x,
   y,

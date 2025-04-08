@@ -12,6 +12,12 @@ import { useAddPhoto } from '../../context/use-add-photo';
 import { useGetDynamicPhotos } from '../../hooks/use-get-dynamic-photos';
 
 import './styles.scss';
+
+/*
+ ** - Not part of the canvas.
+ ** - Get user input to search for images
+ ** - Return images from the API and handle the selection of the image through context
+ */
 export const GetDynamicImages = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [localSelectedPhoto, setLocalSelectedPhoto] = useState<any>(null);

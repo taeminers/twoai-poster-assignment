@@ -1,14 +1,14 @@
 import { useRef, useState } from 'react';
-import { Layer, Stage } from 'react-konva';
+import { ErrorBoundary } from 'react-error-boundary';
+import { Stage } from 'react-konva';
 
 import { ImageUploader } from '@/feature/poster-customization/components/image-uploader';
-import { usePosterContent } from '@/feature/poster-customization/context/use-poster-content';
 import { useDownloadPoster } from '@/feature/poster-download/context/use-download-poster';
 
 import { useUpdateDimensions } from '../../hooks/use-update-dimensions';
 import { AddedImages } from '../added-images';
+import { CanvasBackground } from '../canvas-background';
 import { CanvasEditContent } from '../canvas-edit-content';
-import { CanvasPhoto } from '../canvas-photo';
 import './styles.scss';
 import { GetDynamicImages } from '../get-dynamic-images';
 
@@ -21,7 +21,6 @@ export const Canvas = () => {
   const { posterRef } = useDownloadPoster();
   const containerRef = useRef<HTMLDivElement>(null);
   const dimensions = useUpdateDimensions(containerRef);
-  const { posterData } = usePosterContent();
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const checkDeselect = (e: any) => {
     // Check if clicked on background image or stage
@@ -34,7 +33,9 @@ export const Canvas = () => {
 
   return (
     <div ref={containerRef} className="canvas__container">
-      <GetDynamicImages />
+      <ErrorBoundary fallback={<div>Error Has Occured</div>}>
+        <GetDynamicImages />
+      </ErrorBoundary>
       <ImageUploader />
       <Stage
         width={dimensions.width}
@@ -45,22 +46,13 @@ export const Canvas = () => {
         onMouseDown={checkDeselect}
         onTouchStart={checkDeselect}
       >
-        <Layer>
-          {/* Add background image */}
-          <CanvasPhoto
-            id="background"
-            photoUrl={posterData.backgroundImage}
-            width={dimensions.width}
-            height={dimensions.height}
-            draggable={false}
-          />
-        </Layer>
+        <CanvasBackground dimensions={dimensions} />
         <AddedImages
           dimensions={dimensions}
           selectedId={selectedId}
           setSelectedId={setSelectedId}
         />
-        <CanvasEditContent dimensions={dimensions} posterData={posterData} />
+        <CanvasEditContent dimensions={dimensions} />
       </Stage>
     </div>
   );

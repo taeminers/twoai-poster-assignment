@@ -15,7 +15,11 @@ interface AddPhotoContextType {
   selectedPhoto: Photo[] | null;
   setSelectedPhoto: Dispatch<SetStateAction<Photo[] | null>>;
 }
-
+/*
+ ** - Context for adding photos to the canvas
+ ** - photo is to store the photos that user has searched for
+ ** - selectedPhoto is to store the photos that user has selected and will be used for the canvas
+ */
 export const AddPhotoContext = createContext<AddPhotoContextType | null>(null);
 
 export const AddPhotoProvider = ({

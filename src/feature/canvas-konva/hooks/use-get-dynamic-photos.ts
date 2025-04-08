@@ -1,12 +1,13 @@
 import { useState } from 'react';
 
 import { api } from '@/feature/select-game/hooks/use-get-photos';
+import { useAsyncError } from '@/hooks/use-async-error';
 
 export const useGetDynamicPhotos = () => {
   const [photoData, setPhotoData] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
+  const throwError = useAsyncError();
   const getPhotos = async (searchQuery: string) => {
     if (!searchQuery) {
       setError('Please enter a search term');
@@ -23,9 +24,8 @@ export const useGetDynamicPhotos = () => {
         perPage: 1,
       });
       setPhotoData(result.response?.results);
-    } catch (err) {
-      setError('Failed to fetch photos. Please try again.');
-      console.error(err);
+    } catch (error) {
+      throwError(error);
     } finally {
       setIsLoading(false);
     }

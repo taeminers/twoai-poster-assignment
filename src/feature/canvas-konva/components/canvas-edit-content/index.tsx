@@ -1,7 +1,6 @@
 import { Layer } from 'react-konva';
 
 import { Dimensions } from '@/feature/canvas-konva/hooks/use-update-dimensions';
-import { PosterData } from '@/feature/poster-customization/context/poster-content-context';
 import { useEditPoster } from '@/feature/poster-customization/context/use-edit-poster';
 import { usePosterContent } from '@/feature/poster-customization/context/use-poster-content';
 
@@ -9,14 +8,13 @@ import { CanvasText } from '../canvas-text';
 
 interface CanvasEditContentProps {
   dimensions: Dimensions;
-  posterData: PosterData;
 }
-
-export const CanvasEditContent = ({
-  dimensions,
-  posterData,
-}: CanvasEditContentProps) => {
-  const { setPosterData } = usePosterContent();
+/*
+ ** - The canvas layer with text elements. Teams, slogans, date, venue, players.
+ ** - First assignment didn't have criteria for dynamically adding photos, so this component was used to add text elements
+ */
+export const CanvasEditContent = ({ dimensions }: CanvasEditContentProps) => {
+  const { posterData, setPosterData } = usePosterContent();
   const { isEditMode } = useEditPoster();
   return (
     <Layer>
