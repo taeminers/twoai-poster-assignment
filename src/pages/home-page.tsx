@@ -11,6 +11,7 @@ import { GameList } from '../feature/select-game/components/game-list';
 /**
  * Home page ( Select Game Feature Page)
  * Must select a game to continue
+ * Would use Suspense if used Next.JS. Currently, React does not supports Suspense out of the box.
  */
 const Home: React.FC = () => {
   return (

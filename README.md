@@ -99,7 +99,7 @@ feature-name/
 
 ## Trade-offs or Shortcuts Taken
 
-1. Used Context API instead of State Management Libraries.
+1. Used Context API instead of State Management Libraries (would use for prod)
 
 - To showcase that I have an understanding of context API, and it's limitations.
 - Handle re-rendering through splitting up context.
@@ -117,4 +117,4 @@ feature-name/
 3. Did not Persist state for poster (don't know if its a shortcut)
 
 - From UX perspective, didn't seem correct to save the data user has changed. Don't have an API to change backend, but also, if user leaves, usually changes are not saved.
-- Also, would be weird if we change player name to something weird, and that data persists.
+- Also, would be weird if we change player name, and that data persists.
