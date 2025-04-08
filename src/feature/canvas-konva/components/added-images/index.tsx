@@ -12,7 +12,10 @@ interface AddedImagesProps {
   selectedId: string | null;
   setSelectedId: Dispatch<SetStateAction<string | null>>;
 }
-
+/*
+ ** - The canvas layer with photos
+ ** - Part of the canvas, and renders the photos from the context
+ */
 export const AddedImages = ({
   dimensions,
   selectedId,

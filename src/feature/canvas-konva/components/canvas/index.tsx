@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import { Stage } from 'react-konva';
 
 import { ImageUploader } from '@/feature/poster-customization/components/image-uploader';
@@ -32,7 +33,9 @@ export const Canvas = () => {
 
   return (
     <div ref={containerRef} className="canvas__container">
-      <GetDynamicImages />
+      <ErrorBoundary fallback={<div>Error Has Occured</div>}>
+        <GetDynamicImages />
+      </ErrorBoundary>
       <ImageUploader />
       <Stage
         width={dimensions.width}

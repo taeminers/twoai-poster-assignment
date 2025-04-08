@@ -14,7 +14,11 @@ interface CanvasPhotoProps {
   onSelect?: () => void;
   onChange?: (attrs: any) => void;
 }
-
+/*
+ ** - Custom Photo Component for konva
+ ** - Konva does not have a default photo component, so this was created to be used in the canvas
+ ** - Added a transformer to allow for resizing
+ */
 export const CanvasPhoto = ({
   id,
   photoUrl,

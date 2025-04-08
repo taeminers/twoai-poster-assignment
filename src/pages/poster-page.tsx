@@ -26,9 +26,7 @@ const PosterPage: React.FC = () => {
           }}
         />
         <Space height={50} />
-        <ErrorBoundary fallback={<div>Error Has Occured</div>}>
-          <Canvas />
-        </ErrorBoundary>
+        <Canvas />
         <DownloadButton />
       </section>
     </PotserProviders>

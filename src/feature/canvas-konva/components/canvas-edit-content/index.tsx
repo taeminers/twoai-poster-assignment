@@ -9,7 +9,10 @@ import { CanvasText } from '../canvas-text';
 interface CanvasEditContentProps {
   dimensions: Dimensions;
 }
-
+/*
+ ** - The canvas layer with text elements. Teams, slogans, date, venue, players.
+ ** - First assignment didn't have criteria for dynamically adding photos, so this component was used to add text elements
+ */
 export const CanvasEditContent = ({ dimensions }: CanvasEditContentProps) => {
   const { posterData, setPosterData } = usePosterContent();
   const { isEditMode } = useEditPoster();
