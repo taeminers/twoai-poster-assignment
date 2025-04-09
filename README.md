@@ -121,6 +121,13 @@ npx playwright test --ui
 yarn playwright test --ui
 ```
 
+## Test Results (E2E)
+
+
+https://github.com/user-attachments/assets/9aa88f1d-9f27-4121-bbd3-2888db9a58c5
+
+
+
 ## Trade-offs or Shortcuts Taken
 
 1. Used Context API instead of State Management Libraries (would use for prod)
