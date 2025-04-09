@@ -110,13 +110,10 @@ feature-name/
 
 2. Testing Unit Test, Integration Test, E2E Test.
 
-- Simply no time to implement a thorough test.
-- If I had the time, I would test
-  - Data flow through contexts
-  - User Interactions for selecting game, editing poster through inputs
-  - Image upload functionality
-  - Download functionality
+- currently writing tests.
+- did not have time to write a thorough test in the given couple of days due to being sick :(
 
+  
 3. Did not Persist state for poster (don't know if its a shortcut)
 
 - From UX perspective, didn't seem correct to save the data user has changed. Don't have an API to change backend, but also, if user leaves, usually changes are not saved.
