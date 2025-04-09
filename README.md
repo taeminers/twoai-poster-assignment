@@ -79,6 +79,9 @@ src/
 ├── providers/          # Providers used in page level
 ├── mockdata/          # Mock data for teams and players
 └── pages/           # Pages components
+tests/
+├── home-page.test.tsx        # E2E test using Playwright
+├── poster-page.test.tsx
 ```
 
 Inside each feature, we have the following file structure
@@ -100,6 +103,24 @@ feature-name/
 3. Edit team information, player names, and upload background images
 4. Download the customized poster
 
+## Testing
+
+To run the test locally
+
+```bash
+npx playwright test
+#or
+yarn playwright test
+```
+
+Playwright UI mode (for interactive testing and debugging)
+
+```bash
+npx playwright test --ui
+#or
+yarn playwright test --ui
+```
+
 ## Trade-offs or Shortcuts Taken
 
 1. Used Context API instead of State Management Libraries (would use for prod)
@@ -108,12 +129,12 @@ feature-name/
 - Handle re-rendering through splitting up context.
 - Simplicity and Maintainability. Small project, small context can be handled with only context API
 
-2. Testing Unit Test, Integration Test, E2E Test.
+2. Testing Unit Test, Integration Test
 
-- currently writing tests.
-- did not have time to write a thorough test in the given couple of days due to being sick :(
+- Wrote E2E test using Playwright
+- Unit Testing and Integration Testing passed as E2E testing is more important
+- If I had more time, would definitely focus on integration testing
 
-  
 3. Did not Persist state for poster (don't know if its a shortcut)
 
 - From UX perspective, didn't seem correct to save the data user has changed. Don't have an API to change backend, but also, if user leaves, usually changes are not saved.

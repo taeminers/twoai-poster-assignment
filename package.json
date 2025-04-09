@@ -13,6 +13,7 @@
     "@types/react-dom": "^19.0.4",
     "html2canvas": "^1.4.1",
     "konva": "^9.3.20",
+    "playwright": "^1.51.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-error-boundary": "^5.0.0",
@@ -46,6 +47,7 @@
   "devDependencies": {
     "@craco/craco": "^7.1.0",
     "@eslint/js": "^9.23.0",
+    "@playwright/test": "^1.51.1",
     "@typescript-eslint/eslint-plugin": "^8.28.0",
     "@typescript-eslint/parser": "^8.28.0",
     "eslint": "^8.57.1",

@@ -8,6 +8,7 @@ export const ArrowLeft = () => {
       height="24"
       fill="none"
       viewBox="0 0 24 24"
+      data-testid="arrow-left"
     >
       <path
         stroke="currentColor"

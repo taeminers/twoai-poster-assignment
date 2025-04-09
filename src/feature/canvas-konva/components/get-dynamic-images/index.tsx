@@ -47,7 +47,7 @@ export const GetDynamicImages = () => {
   };
 
   return (
-    <div>
+    <>
       <form onSubmit={handleSearch} className="dynamic-images__form">
         <input
           type="text"
@@ -84,6 +84,6 @@ export const GetDynamicImages = () => {
           </div>
         ))}
       </div>
-    </div>
+    </>
   );
 };

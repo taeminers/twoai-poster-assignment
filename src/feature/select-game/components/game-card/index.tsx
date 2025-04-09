@@ -13,8 +13,8 @@ interface GameCardProps {
 export const GameCard = React.memo(
   ({ teamA, teamB, date, venue, isSelected, photo }: GameCardProps) => {
     return (
-      <div className={`game-card ${isSelected ? 'selected' : ''}`}>
-        <img src={photo} alt="game" className="game-card__photo" />
+      <div className={`game-card ${isSelected && 'selected'}`}>
+        {photo && <img src={photo} alt="game" className="game-card__photo" />}
         <div className="game-card__desc">
           <div className="game-card__teams">
             <div className="game-card__teams-text">{teamA}</div>
