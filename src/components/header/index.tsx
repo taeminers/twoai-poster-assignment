@@ -24,13 +24,21 @@ const Header: React.FC<HeaderProps> = ({
     <header className={`header ${className}`}>
       <div className="header__container">
         {leftIcon && (
-          <div className="header__left-button" onClick={onLeftIconClick}>
+          <div
+            className="header__left-button"
+            onClick={onLeftIconClick}
+            data-testid="header__left-button"
+          >
             {leftIcon}
           </div>
         )}
         <h2 className="header__title">{title}</h2>
         {rightIcon && (
-          <div className="header__right-button" onClick={onRightIconClick}>
+          <div
+            className="header__right-button"
+            onClick={onRightIconClick}
+            data-testid="header__right-button"
+          >
             {rightIcon}
           </div>
         )}

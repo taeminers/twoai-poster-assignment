@@ -42,6 +42,7 @@ export const ImageUploader = () => {
       <input
         ref={fileInputRef}
         type="file"
+        data-testid="image-uploader__input"
         className="image-uploader__input"
         accept="image/*"
         onChange={handleBackgroundChange}

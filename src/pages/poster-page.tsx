@@ -21,7 +21,7 @@ const PosterPage: React.FC = () => {
           leftIcon={<ArrowLeft />}
           rightIcon={<EditButton />}
           onLeftIconClick={() => {
-            navigate(-1);
+            navigate('/');
           }}
         />
         <Space height={50} />
