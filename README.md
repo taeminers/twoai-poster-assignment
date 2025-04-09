@@ -71,7 +71,8 @@ Feature-based file structure as project size is small, and features are easily s
 src/
 ├── components/         # Reusable UI components & non feature-related components
 ├── feature/           # Feature-based modules
-│   ├── poster-customization/  # Poster editing features
+│   ├── canvas-konva/  # Poster editing features using konva library
+│   ├── poster-customization/  # Poster editing features(legacy)
 │   └── poster-download/       # Poster download features
 |   |__ select-game/           # select game feature
 ├── hooks/          # General hooks that are reusable
