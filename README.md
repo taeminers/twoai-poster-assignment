@@ -26,9 +26,9 @@ Rules (bulletproof-react)
 - Filename and Folder name convention (kebab-case)
 
 Other things to Note.
--Tried to make components follow SOLID principle
--Dynamnic image fetching from unsplash API
--Error boundaries to ensure the whole app does not crash (used on data fetching components)
+- Tried to make components follow SOLID principle
+- Dynamnic image fetching from unsplash API
+- Error boundaries to ensure the whole app does not crash (used on data fetching components)
 - Used CRACO for alias imports.
   
 
