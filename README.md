@@ -37,7 +37,7 @@ Other things to Note.
 ### Prerequisites
 
 - Node.js (v14 or higher)
-- npm or yarn
+- yarn
 
 ### Installation
 
@@ -50,16 +50,12 @@ git clone [repository-url]
 2. Install dependencies:
 
 ```bash
-npm install
-# or
-yarn install
+yarn install (due to dependency collision, use yarn for better performance)
 ```
 
 3. Start the development server:
 
 ```bash
-npm run start
-# or
 yarn start
 ```
 
